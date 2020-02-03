@@ -14,7 +14,11 @@ def nyc_pigeon_organizer(data)
     category_values.each do |characteristic, characteristic_values|
       specific_characteristic = characteristic
       characteristic_values.each do |name|
-        result[name] = {specific_category => [specific_characteristic.to_s]}
+        if result.include?(name)
+          result[name][specific_category] = [specific_characteristic.to_s]
+        else
+          result[name] = {specific_category => [specific_characteristic.to_s]}
+        end
       end
     end
   end
